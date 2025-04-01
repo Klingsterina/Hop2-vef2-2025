@@ -1,14 +1,14 @@
-import styles from '../Styles/page.module.scss';
-import Footer from '@/components/Footer';
+import Footer from '../components/Footer/Footer';
+import Header from '../components/Header/Header';
 
 export default function Home() {
   return (
     <main>
+      <Header />
       <div>
-        <h1 className={styles.title}>Hópverkefni 2</h1>
+        <br />
       </div>
-      <p>Hallo</p>
       <Footer />
     </main>
-  );
-}
+    );
+  }
