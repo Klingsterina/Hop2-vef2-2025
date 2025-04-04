@@ -2,15 +2,41 @@
 
 import { useState } from 'react';
 import '../../Styles/auth.scss';
+import { useRouter } from 'next/navigation';
 
 export default function SignInPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // sign in logic hérna
-    console.log('Signing in:', { email, password });
+    setError('');
+
+    try {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || 'Login failed');
+      }
+
+      // token save 
+      if (data.token) {
+        localStorage.setItem('token', data.token);
+      }
+
+      // Redirect to homepage
+      router.push('/');
+    } catch (err: any) {
+      setError(err.message);
+    }
   };
 
   return (
@@ -26,6 +52,7 @@ export default function SignInPage() {
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </label>
         <button type="submit">Sign In</button>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
       </form>
     </div>
   );
