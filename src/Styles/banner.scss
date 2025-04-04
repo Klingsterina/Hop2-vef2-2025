@@ -12,9 +12,13 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    position: relative;
   }
   
   .banner-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     border: 2px solid black;
     border-radius: 12px;
     padding: 0.25rem 0.75rem;
@@ -22,14 +26,75 @@
     color: black;
     font-weight: bold;
     white-space: nowrap;
+    cursor: pointer;
+  
+    a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+  
+    a:hover {
+      text-decoration: underline;
+    }
   }
   
   .banner-divider {
     width: 1px;
-    height: 1.5rem;
+    height: 1.2rem;
     background-color: black;
   }
   
   .banner-icon {
     font-size: 1.2rem;
   }
+
+  .banner-profile {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid black;
+  }
+
+  .banner-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 0.5rem;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  
+    .dropdown-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      background: none;
+      border: none;
+      font-weight: bold;
+      color: black;
+      cursor: pointer;
+      padding: 0.25rem 0.5rem;
+      text-decoration: none;
+  
+      &:hover {
+        background-color: #f0f0f0;
+      }
+  
+      svg {
+        flex-shrink: 0;
+      }
+    }
+  
+    a {
+      text-decoration: none;
+    }
+  }  

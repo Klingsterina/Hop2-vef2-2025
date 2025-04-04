@@ -3,7 +3,7 @@ import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
 
 export default function Home() {
-  const isLoggedIn = false;
+  const isLoggedIn = true;
   const username = 'User name';
 
   return (
