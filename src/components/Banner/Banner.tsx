@@ -22,6 +22,7 @@ export default function Banner({ isLoggedIn, username, profilePicture }: BannerP
 
   const handleSignOut = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     window.location.href = '/';
   };
 

@@ -15,7 +15,7 @@ export default function SignInPage() {
     setError('');
 
     try {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
@@ -24,15 +24,20 @@ export default function SignInPage() {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.message || 'Login failed');
+        throw new Error(data.error || 'Login failed');
       }
 
-      // token save 
-      if (data.token) {
-        localStorage.setItem('token', data.token);
+      // 2) Store JWT token
+      if (data.user && data.user.token) {
+        localStorage.setItem('token', data.user.token);
       }
 
-      // Redirect to homepage
+      // 3) Optionally store user info (username, etc.)
+      if (data.user && data.user.username) {
+        localStorage.setItem('user', JSON.stringify(data.user));
+      }
+
+      // 4) Redirect to homepage
       router.push('/');
     } catch (err: any) {
       setError(err.message);
