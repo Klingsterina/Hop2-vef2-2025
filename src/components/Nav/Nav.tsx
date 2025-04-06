@@ -6,10 +6,10 @@ export default function Nav() {
         <nav className={styles.nav}>
             <ol>
                 <li><Link href="/">Forsíða</Link></li>
-                <li><Link href="">Champions</Link></li>
-                <li><Link href="">Items</Link></li>
-                <li><Link href="">Runes</Link></li>
-                <li><Link href="">Summoner Spells</Link></li>
+                <li><Link href="/champions">Champions</Link></li>
+                <li><Link href="/items">Items</Link></li>
+                {/* <li><Link href="">Runes</Link></li>
+                <li><Link href="">Summoner Spells</Link></li> */}
             </ol>
         </nav>
     );
