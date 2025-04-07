@@ -57,6 +57,12 @@
     animation: rainbowScroll 2s linear infinite;
 }
 
+.active {
+    color: gray;
+    font-weight: bolder;
+    pointer-events: none; /* valfrjálst: gerir linkinn óvirkan */
+}
+
 @keyframes rainbowScroll {
     0% {
         background-position: 100% 0%;
@@ -66,14 +72,11 @@
     }
 }
 
-
-
-
 .nav ol li:hover {
     cursor: pointer;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 670px) {
     .nav {
         padding: 18px 1rem;
     }

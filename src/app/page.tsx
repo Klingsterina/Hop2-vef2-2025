@@ -1,9 +1,6 @@
-import Link from 'next/link';
-
 'use client';
-import Banner from '../components/Banner/Banner';
-import Footer from '../components/Footer/Footer';
-import Header from '../components/Header/Header';
+import Link from 'next/link';
+import styles from '../Styles/page.module.scss';
 import { useEffect, useState } from 'react';
 
 export default function Home() {
@@ -27,14 +24,13 @@ export default function Home() {
 
   return (
     <main>
-      <Banner isLoggedIn={isLoggedIn} username={username} />
-      <Header />
-      <div>
-        <h1>Forsíða</h1>
-        <Link href="/champions">champions</Link>
-        <Link href="/items">Items</Link>
+      <div className={styles.frontpage}>
+        <h1 className={`${styles.center} ${styles.title}`}>Forsíða</h1>
+        <div className={styles.linkWrapper}>
+          <Link className={styles.link} href="/champions">See all champions</Link>
+          <Link className={styles.link} href="/items">See all items</Link>
+        </div>
       </div>
-      <Footer />
     </main>
   );
 }
