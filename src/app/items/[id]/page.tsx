@@ -6,13 +6,9 @@ import { useParams } from 'next/navigation';
 import { Api } from '../../../api';
 import { ItemResponse } from '@/types/items';
 import Link from 'next/link';
-import Header from '@/components/Header/Header';
-import Banner from '@/components/Banner/Banner';
 import styles from '../../../Styles/page.module.scss';
 
 export default function ItemsIdPage() {
-  const isLoggedIn = true;
-  const username = 'User name';
   const { id } = useParams();
   const api = new Api();
   const [item, setItem] = useState<ItemResponse | null>(null);
@@ -44,18 +40,19 @@ export default function ItemsIdPage() {
     }
   }, [id]);
 
-  if (loading) return <div className={styles.center}>Loading...</div>;
-  if (error || !item) return <div className={styles.center}>Error loading items</div>;
+  if (loading) return <div className={styles.center} style={{padding: '1rem'}}>Loading...</div>;
+  if (error || !item) return <div className={styles.center} style={{padding: '1rem'}}>Error loading items</div>;
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <Banner isLoggedIn={isLoggedIn} username={username} />
-      <Header />
-      
-      <Link href="/items">Til baka</Link>
-      <h1>{item.name}</h1>
-      <p dangerouslySetInnerHTML={{ __html: item.description}}></p>
-      <Image src={item.imageUrl} alt={item.name} width={500} height={500} />
+    <div style={{alignItems: 'center'}}>
+      <h1 className={`${styles.title} ${styles.center}`}>{item.name}</h1>
+      <div className={styles.details_container} style={{ padding: '2rem' }}>    
+        <p dangerouslySetInnerHTML={{ __html: item.description}}></p>
+        <div className={styles.imageWrapper}>
+          <Image src={item.imageUrl} alt={item.name} fill />
+        </div>
+        <Link className={styles.link} style={{marginTop: '4rem'}} href="/items">Til baka</Link>
+      </div>
     </div>
   );
 }

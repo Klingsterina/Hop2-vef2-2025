@@ -5,13 +5,9 @@ import { ItemResponse, PaginatedItemResponse } from "@/types/items";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Header from "@/components/Header/Header";
-import Banner from "@/components/Banner/Banner";
 import styles from "../../Styles/page.module.scss";
 
 export default function Items() {
-    const isLoggedIn = true;
-    const username = 'User name';
     const api = new Api();
     const [items, setItems] = useState<ItemResponse[]>([]);
     const [page, setPage] = useState(1);
@@ -43,34 +39,40 @@ export default function Items() {
         fetchItems();
     }, [page]);
 
-    if (loading) return <div className={styles.center}>Loading...</div>;
-    if (error) return <div className={styles.center}>Error loading items</div>;
-    if (items.length === 0) return <div className={styles.center}>No items found</div>;
+    if (loading) return <div className={styles.center} style={{padding: '1rem'}}>Loading...</div>;
+    if (error) return <div className={styles.center} style={{padding: '1rem'}}>Error loading items</div>;
+    if (items.length === 0) return <div className={styles.center} style={{padding: '1rem'}}>No items found</div>;
 
     return (
         <div>
-            <Banner isLoggedIn={isLoggedIn} username={username} />
-            <Header />
-            <h1>Items</h1>
-            <ul>
+            <h1 className={`${styles.center} ${styles.title}`} style={{marginTop: '2rem'}}>Items</h1>
+            <ul className={styles.cards}>
                 {items.map((item) => (
-                    <li key={item.id}>
-                        <Link href={`/items/${item.id}`}>{item.name}</Link>
-                        <Image src={item.imageUrl} alt={item.name} width={64} height={64} />
+                    <li className={`${styles.card} ${styles.col_n}`} key={item.id}>
+                        <p>{item.name}</p>
+                        <div className={styles.imageWrapper}>
+                            <Link href={`/items/${item.id}`}><Image src={item.imageUrl} alt={item.name} fill /></Link>
+                        </div>
                     </li>
                 ))}
             </ul>
 
-            <div style={{ marginTop: '2rem' }}>
-                <button onClick={() => setPage(page - 1)} disabled={page <= 1}>
-                    Previous
-                </button>
-                <span style={{ margin: '0 1rem' }}>
-                    Page {page} of {totalPages}
-                </span>
-                <button onClick={() => setPage(page + 1)} disabled={page >= totalPages}>
-                    Next
-                </button>
+            <div className={styles.center} style={{ marginTop: '2rem', marginBottom: '2rem' }}>
+            <button
+                className={`${styles.button} ${page <= 1 ? styles.disabled : ''}`}
+                onClick={() => setPage(page - 1)}
+                disabled={page <= 1}
+                >Fyrri
+            </button>
+            <span style={{ margin: '0 1rem' }}>
+                Page {page} of {totalPages}
+            </span>
+            <button
+                className={`${styles.button} ${page >= totalPages ? styles.disabled : ''}`}
+                onClick={() => setPage(page + 1)}
+                disabled={page >= totalPages}
+                >Næsta
+            </button>
             </div>
         </div>
     );

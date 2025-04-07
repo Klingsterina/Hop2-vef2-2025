@@ -66,14 +66,11 @@
     }
 }
 
-
-
-
 .nav ol li:hover {
     cursor: pointer;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 670px) {
     .nav {
         padding: 18px 1rem;
     }

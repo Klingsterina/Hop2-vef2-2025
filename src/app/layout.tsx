@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import '../Styles/globals.scss';
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 
 const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
 const isLoggedIn = !!token;
@@ -22,7 +24,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

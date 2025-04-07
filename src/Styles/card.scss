@@ -1,3 +1,80 @@
 .center {
     place-self: center;
 }
+
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 3rem 0;
+    margin: 0 auto;
+    padding: 20px;
+    justify-items: center; /* lárétt miðja */
+    align-items: center;
+    max-width: 1400px;
+    width: 100%;
+}
+
+.col_n {
+    grid-column-end: span 3;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px #000;
+    padding: 2rem;
+    align-items: center;
+    background-color: antiquewhite;
+}
+
+.card a {
+    padding: 1rem;
+}
+
+.card p {
+    margin-bottom: 0.5rem;
+    font-size: 30px;
+}
+
+.imageWrapper {
+    position: relative;
+    width: 220px;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #fff; /* fyllir út ójöfn bil */
+}
+
+.button {
+    background-color: black;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .disabled {
+    background-color: #ccc;
+    color: #666;
+    border-radius: 5px;
+    cursor: not-allowed;
+  }
+
+@media (max-width: 1260px) {
+    .col_n {
+        grid-column-end: span 4;
+    }
+}
+
+@media (max-width: 980px) {
+    .col_n {
+        grid-column-end: span 6;
+    }
+}
+
+@media (max-width: 670px) {
+    .col_n {
+        grid-column-end: span 12;
+    }
+}
