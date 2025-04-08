@@ -1,5 +1,5 @@
 import { ChampionResponse, PaginatedChampionResponse } from "./types/champion";
-import { Item, PaginatedItemResponse } from "./types/items";
+import { ItemResponse, PaginatedItemResponse } from "./types/items";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ?? 'http://localhost:8000';
 
@@ -50,9 +50,9 @@ export class Api {
         return this.fetchFromApi<PaginatedItemResponse>(url);
     }
 
-    async getItemById(id: string): Promise<Item | null> {
+    async getItemById(id: string): Promise<ItemResponse | null> {
         const url = `${BASE_URL}/items/${id}`;
-        return this.fetchFromApi<Item>(url);
+        return this.fetchFromApi<ItemResponse>(url);
     }
 }
 
