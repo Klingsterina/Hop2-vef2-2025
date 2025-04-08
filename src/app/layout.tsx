@@ -3,13 +3,13 @@ import '../Styles/globals.scss';
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 
-const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-const isLoggedIn = !!token;
-let storedUser = null;
-if (typeof window !== 'undefined') {
-  storedUser = localStorage.getItem('user');
-}
-const userObj = storedUser ? JSON.parse(storedUser) : {};
+// const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+// const isLoggedIn = !!token;
+// let storedUser = null;
+// if (typeof window !== 'undefined') {
+//   storedUser = localStorage.getItem('user');
+// }
+// const userObj = storedUser ? JSON.parse(storedUser) : {};
 
 export const metadata: Metadata = {
   title: "Hópverkefni 2",

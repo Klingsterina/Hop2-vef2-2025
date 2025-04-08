@@ -29,8 +29,12 @@ export default function RegisterPage() {
       }
 
       setSuccess('Registration successful! You can now sign in.');
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('An unknown error occurred');
+      }
     }
   };
 
