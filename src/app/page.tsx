@@ -29,6 +29,7 @@ export default function Home() {
         <div className={styles.linkWrapper}>
           <Link className={styles.link} href="/champions">See all champions</Link>
           <Link className={styles.link} href="/items">See all items</Link>
+          <Link className={styles.link} href="/signin">SignIn</Link>
         </div>
       </div>
     </main>
