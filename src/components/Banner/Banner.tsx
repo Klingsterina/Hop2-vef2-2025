@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useRef, useEffect, useLayoutEffect } from 'react';
+import Image from 'next/image';
+import { useState, useRef, useLayoutEffect } from 'react';
 import { FiSettings, FiLogOut } from 'react-icons/fi';
 import '../../Styles/banner.scss';
 
@@ -40,7 +41,7 @@ export default function Banner({ isLoggedIn, username, profilePicture }: BannerP
             <span>{username}</span>
             <span className="banner-divider" />
             {profilePicture ? (
-              <img src={profilePicture} alt="Profile" className="banner-profile" />
+              <Image src={profilePicture} alt="Profile" className="banner-profile" />
             ) : (
               <span className="banner-icon">👤</span>
             )}
