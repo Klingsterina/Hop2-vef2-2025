@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import '../../Styles/settings.scss';
 
 export default function SettingsPage() {
@@ -11,7 +12,7 @@ export default function SettingsPage() {
 
   useEffect(() => {
     fetchUserProfile();
-  }, []);
+  },);
 
   const getToken = () => {
     return localStorage.getItem('token') || '';
@@ -131,7 +132,7 @@ export default function SettingsPage() {
       {/* Avatar Container */}
       <div className="settings-avatar" onClick={handleAvatarClick}>
         {avatarUrl ? (
-          <img src={avatarUrl} alt="Profile Avatar" className="avatar-image" />
+          <Image src={avatarUrl} alt="Profile Avatar" className="avatar-image" />
         ) : (
           <div className="avatar-placeholder" title="Default Avatar">
             <span role="img" aria-label="avatar emoji">
@@ -213,8 +214,12 @@ async function handleUpdatePassword(currentPassword: string, newPassword: string
       throw new Error(data.error || 'Failed to update password');
     }
     alert('Password updated successfully!');
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error(err);
-    alert(err.message);
+    if (err instanceof Error) {
+      alert(err.message);
+    } else {
+      alert('An unknown error occurred');
+    }
   }
 }

@@ -1,26 +1,26 @@
 'use client';
 import Link from 'next/link';
 import styles from '../Styles/page.module.scss';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 
 export default function Home() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState('');
-  const [profilePic, setProfilePic] = useState('');
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [username, setUsername] = useState('');
+  // const [profilePic, setProfilePic] = useState('');
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      setIsLoggedIn(true);
-    }
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token');
+  //   if (token) {
+  //     setIsLoggedIn(true);
+  //   }
 
-    const userData = localStorage.getItem('user');
-    if (userData) {
-      const userObj = JSON.parse(userData);
-      setUsername(userObj.username || '');
-      setProfilePic(userObj.profilePicture || '');
-    }
-  }, []);
+  //   const userData = localStorage.getItem('user');
+  //   if (userData) {
+  //     const userObj = JSON.parse(userData);
+  //     setUsername(userObj.username || '');
+  //     setProfilePic(userObj.profilePicture || '');
+  //   }
+  // }, []);
 
   return (
     <main>
