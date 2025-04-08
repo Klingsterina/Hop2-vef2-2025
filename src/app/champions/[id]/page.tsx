@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { useParams } from 'next/navigation';
+import { notFound, useParams } from 'next/navigation';
 import { Api } from '../../../api';
 import { ChampionResponse } from '@/types/champion';
 import Link from 'next/link';
@@ -41,7 +41,7 @@ export default function ChampionIdPage() {
   }, [id]);
 
   if (loading) return <div className={styles.center} style={{padding: '1rem'}}>Loading...</div>;
-  if (error || !champion) return <div className={styles.center} style={{padding: '1rem'}}>Error loading champion</div>;
+  if (error || !champion) return notFound();
 
   return (
     <div style={{alignItems: 'center'}}>

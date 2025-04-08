@@ -50,7 +50,6 @@
     transition: transform 0.4s ease-in-out;
 }
 
-/* On hover: reveal + animate gradient left to right */
 .nav ol li:hover::before {
     transform: scaleX(1);
     transform-origin: bottom left;
@@ -60,7 +59,7 @@
 .active {
     color: gray;
     font-weight: bolder;
-    pointer-events: none; /* valfrjálst: gerir linkinn óvirkan */
+    pointer-events: none;
 }
 
 @keyframes rainbowScroll {
