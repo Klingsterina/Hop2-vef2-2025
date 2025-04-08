@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { useParams } from 'next/navigation';
+import { notFound, useParams } from 'next/navigation';
 import { Api } from '../../../api';
 import { ItemResponse } from '@/types/items';
 import Link from 'next/link';
@@ -41,7 +41,7 @@ export default function ItemsIdPage() {
   }, [id]);
 
   if (loading) return <div className={styles.center} style={{padding: '1rem'}}>Loading...</div>;
-  if (error || !item) return <div className={styles.center} style={{padding: '1rem'}}>Error loading items</div>;
+  if (error || !item) return notFound();
 
   return (
     <div style={{alignItems: 'center'}}>

@@ -57,6 +57,7 @@ export default function SignInPage() {
           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </label>
         <button type="submit">Sign In</button>
+        <button type="button" onClick={() => router.push('/register')}>Register</button>
         {error && <p style={{ color: 'red' }}>{error}</p>}
       </form>
     </div>

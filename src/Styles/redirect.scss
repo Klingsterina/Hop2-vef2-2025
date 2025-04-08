@@ -1,0 +1,26 @@
+
+.notFoundPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 700px;
+    margin: 2rem auto;
+    max-width: 90%;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.notFoundPage h1 {
+    font-size: 15rem;
+    margin-bottom: 1rem;
+}
+
+.notFoundPage h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.redirect {
+    padding: 1rem;
+    border-bottom: solid 1px #ccc;
+}

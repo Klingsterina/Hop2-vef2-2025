@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "../../Styles/page.module.scss";
+import { notFound } from "next/navigation";
 
 export default function Items() {
     const api = new Api();
@@ -41,7 +42,7 @@ export default function Items() {
 
     if (loading) return <div className={styles.center} style={{padding: '1rem'}}>Loading...</div>;
     if (error) return <div className={styles.center} style={{padding: '1rem'}}>Error loading items</div>;
-    if (items.length === 0) return <div className={styles.center} style={{padding: '1rem'}}>No items found</div>;
+    if (items.length === 0) return notFound();
 
     return (
         <div>

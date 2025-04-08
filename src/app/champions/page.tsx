@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Api } from '../../api';
 import { ChampionResponse, PaginatedChampionResponse } from '@/types/champion';
 import styles from '../../Styles/page.module.scss';
+import { notFound } from 'next/navigation';
 
 
 export default function ChampionsPage() {
@@ -42,7 +43,7 @@ export default function ChampionsPage() {
 
   if (loading) return <div className={styles.center} style={{padding: '1rem'}}>Loading...</div>;
   if (error) return <div className={styles.center} style={{padding: '1rem'}}>Error loading champions</div>;
-  if (champions.length === 0) return <div className={styles.center} style={{padding: '1rem'}}>No champions found</div>;
+  if (champions.length === 0) return notFound();
 
   return (
     <div>
